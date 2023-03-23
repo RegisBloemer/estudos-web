@@ -1,0 +1,11 @@
+Repositório de Estudos de HTML, JavaScript e CSS
+Este repositório foi criado para armazenar e organizar todos os materiais e exercícios relacionados aos estudos de HTML, JavaScript e CSS. O objetivo é aprender e aprimorar habilidades em desenvolvimento web front-end, criando projetos práticos e compartilhando conhecimentos.
+
+Conteúdo
+O repositório está organizado em pastas separadas para cada tecnologia:
+
+html: Materiais e exercícios relacionados ao HTML (HyperText Markup Language).
+javascript: Materiais e exercícios relacionados ao JavaScript, a linguagem de programação usada no desenvolvimento web.
+css: Materiais e exercícios relacionados ao CSS (Cascading Style Sheets), que é usado para estilizar páginas da web.
+Instruções
+Clone o repositório para sua máquina local usando git clone https://github.com/seudousername/estudos-html-js-css.git.
