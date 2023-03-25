@@ -1,7 +1,17 @@
-li{
-  color: green;
+.yellow-text {
+  color: orange;
+  font-size: 20px;
 }
 
-h1{
-  font-size: 30px;
+.big-text {
+  font-size: 40px;
+}
+
+#europa-text {
+  color: blue;
+  font-size: 20px;
+}
+
+li {
+  color: gray;
 }
