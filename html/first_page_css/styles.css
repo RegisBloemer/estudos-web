@@ -36,3 +36,11 @@ a[href = "what_you_mint"]{
 li:nth-of-type(2){
   color: blue;
 }
+
+div{
+  border: 2px solid;
+}
+
+div ul {
+  border: inherit;
+}
