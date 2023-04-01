@@ -8,4 +8,8 @@ p{
 h1{
   text-align: center;
   text-decoration: underline;
+  margin-bottom: 100px;
+  width: 15%;
+  border: 2px solid;
+  padding: 10px;
 }
