@@ -10,7 +10,7 @@ const numberOfConversion = prompt(
 );
 switch (numberOfConversion) {
   case "1":
-    alert("Resultado: " + medida + "m = " + medida * 1000 + "mm");
+    alert(`Aconverção de ${value} m é ${value * 1000} em cm`);
     break;
   case "2":
     alert("Resultado: " + medida + "m = " + medida * 100 + "cm");
