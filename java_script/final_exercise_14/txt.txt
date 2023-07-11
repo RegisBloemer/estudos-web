@@ -1,0 +1,12 @@
+  Como posso fazer para o sistema pedir se o usuário deseja criar esta vaga ou cancelar ?
+  
+    case "2":
+      nome_da_vaga = prompt("\n1) Digite o nome da vaga:");
+      quantidade = prompt("\n2) Digite a quantidade de vagas disponiveis:");
+      descrição = prompt("\n3) Digite uma descrição básica sobre a vaga: ");
+      data = prompt("\n4) Digite a data limite para esta vaga: ");
+      criarVaga(lista, nome_da_vaga, quantidade, descrição, data);
+      alert(
+        `Vaga de ${nome_da_vaga} com a quandidade de ${quantidade} criada!;`
+      );
+      break; 
