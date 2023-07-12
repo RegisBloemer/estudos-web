@@ -17,6 +17,7 @@ function escalarJogador() {
     h3.innerText = `Informações do Jogador ${numeroJogador}`;
 
     const ul = document.createElement("ul");
+    ul.id = "jogador-" + numeroJogador;
 
     const posicaoJogadorLi = document.createElement("li");
     posicaoJogadorLi.innerText = `Posição do jogador: ${posicaoJogador}`;
@@ -30,6 +31,7 @@ function escalarJogador() {
 
     const numeroJogadorLi = document.createElement("li");
     numeroJogadorLi.innerText = `Numero da camisa do jogador: ${numeroJogador}`;
+    numeroJogadorLi.id = "jogador-" + numeroJogador;
     ul.appendChild(numeroJogadorLi);
     ul.appendChild(document.createElement("br"));
 
@@ -46,28 +48,19 @@ function escalarJogador() {
 }
 
 function removerJogadorEscalado() {
-  const jogadoresSection = document.getElementById("jogadores-list");
-
-  const titles = document.getElementsByTagName("h3");
-  const jogador = document.getElementsByTagName("ul");
-
-  const ultimoJogador = jogador[jogador.length - 1];
-  const lis = ultimoJogador.getElementsByTagName("li");
+  const number = document.getElementById("remocao").value;
+  const jogadorParaRemover = document.getElementById("jogador-" + number);
 
   const confirma = confirm(
-    `Tem certeza que deseja cancelar escalação deste jogador?: \n 
-    ${lis.item(0).textContent} 
-    ${lis.item(1).textContent} 
-    ${lis.item(2).textContent}`
+    `Tem certeza que deseja cancelar escalação deste jogador?:
+    ${jogadorParaRemover.innerText}`
   );
 
   if (confirma) {
-    jogadoresSection.removeChild(titles[titles.length - 1]);
-    jogadoresSection.removeChild(ultimoJogador);
+    document.getElementById("jogadores-list").removeChild(jogadorParaRemover);
+    document.getElementById("remocao").value = "";
   } else {
     alert(`A escalação deste jogador não foi cancelada: \n 
-    ${lis.item(0).textContent} 
-    ${lis.item(1).textContent} 
-    ${lis.item(2).textContent}`);
+    ${jogadorParaRemover.innerText}`);
   }
 }
