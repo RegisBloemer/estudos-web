@@ -1,6 +1,7 @@
 const form = document.getElementById("devForm");
 
 const infosDevs = [];
+let inputRows = 0;
 
 form.addEventListener("submit", function (env) {
   env.preventDefault();
@@ -42,8 +43,9 @@ form.addEventListener("submit", function (env) {
     const button = document.createElement("input");
     label.innerText = radioButton.label;
     button.type = "radio";
-    button.name = radioButton.name;
-    button.id = radioButton.id;
+    button.name = `${radioButton.name}-${inputRows}`;
+    button.id = `${radioButton.id}-${inputRows}`;
+    inputRows++;
     button.value = radioButton.value;
     label.appendChild(button);
     labelInfos.appendChild(label);
@@ -59,14 +61,18 @@ form.addEventListener("submit", function (env) {
     let nameTecValue = document.getElementById("nameTec").value;
     let selectedRadioValue;
     for (let radioButton of radioButtons) {
-      if (document.getElementById(radioButton.id).checked) {
-        selectedRadioValue = document.getElementById(radioButton.id).value;
+      let selectedButton = document.querySelector(
+        `input[name="${radioButton.name}"]:checked`
+      );
+      if (selectedButton) {
+        selectedRadioValue = selectedButton.value;
         break;
       }
     }
 
     // Add the data to the formData array
     infosDevs.push({
+      nameDev: document.getElementById("name").value,
       nameTec: nameTecValue,
       selectedOption: selectedRadioValue,
     });
