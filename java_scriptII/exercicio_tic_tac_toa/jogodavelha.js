@@ -1,17 +1,18 @@
-var board = Array(3)
+let board = Array(3)
   .fill(null)
   .map(() => Array(3).fill(null));
 const player1 = document.querySelector("#player1").value;
 const player2 = document.querySelector("#player2").value;
-var currentPlayer = "X";
-var players = {
+let cells = Array.from(document.getElementsByClassName("cell"));
+let currentPlayer = "";
+let players = {
   X: player1,
   O: player2,
 };
-var gameActive = true;
+let gameActive;
 
 window.onload = function () {
-  var cells = document.getElementsByClassName("cell");
+  var cells = Array.from(document.getElementsByClassName("cell"));
   for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener("click", function () {
       var row = Math.floor(i / 3);
@@ -21,22 +22,26 @@ window.onload = function () {
       }
       board[row][col] = currentPlayer;
       cells[i].innerText = currentPlayer;
-      checkGameStatus();
       currentPlayer = currentPlayer === "X" ? "O" : "X";
       document.getElementById("message").innerText =
         "Turno de " + players[currentPlayer];
+      checkGameStatus();
     });
   }
 
   document.getElementById("reset").addEventListener("click", function () {
-    board = Array(3)
-      .fill(null)
-      .map(() => Array(3).fill(null));
-    currentPlayer = "X";
-    gameActive = true;
-    document.getElementById("message").innerText = "";
-    for (let i = 0; i < cells.length; i++) {
-      cells[i].innerText = "";
+    if (players.X && players.O) {
+      board = Array(3)
+        .fill(null)
+        .map(() => Array(3).fill(null));
+      currentPlayer = "X";
+      gameActive = true;
+      document.getElementById("message").innerText =
+        "Turno de " + players[currentPlayer];
+      for (let i = 0; i < cells.length; i++) {
+        cells[i].innerText = "";
+        cells[i].classList.remove("winning-cell");
+      }
     }
   });
 };
@@ -91,7 +96,12 @@ function checkGameStatus() {
       val === board[lines[i][1][0]][lines[i][1][1]] &&
       val === board[lines[i][2][0]][lines[i][2][1]]
     ) {
-      document.getElementById("message").innerText = players[val] + " ganhou!";
+      lines[i].forEach(([row, col]) => {
+        const cellIndex = 3 * row + col;
+        cells[cellIndex].classList.add("winning-cell");
+      });
+      document.getElementById("messageWin").innerText =
+        players[val] + " ganhou!";
       gameActive = false;
       return;
     }
@@ -102,7 +112,7 @@ function checkGameStatus() {
       0
     ) === 0
   ) {
-    document.getElementById("message").innerText = "Empate!";
+    document.getElementById("messageWin").innerText = "Empate!";
     gameActive = false;
   }
 }
